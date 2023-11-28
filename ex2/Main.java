@@ -1,35 +1,53 @@
 
 public class Main {
     public static void main(String[] args) {
-        int milkAmount = 200; // ml
-        int powderAmount = 5; // g
-        int eggsCount = 3; // items
-        int sugarAmount = 5; // g
-        int oilAmount = 30; // ml
-        int appleCount = 8; // items
+        int vasyaAge = 29;
+        int katyaAge = 12;
+        int mishaAge = 119;
 
-        if (appleCount >= 5) {
-            System.out.println("Apple juice");
-        } else {
-            System.out.println("Not enough ingredients");
-        }
+        int min = -1; // минимальный возраст
+        int middle = -1; // средний возраст
+        int max = -1; // максимальный возраст
 
-        if (powderAmount == 400 && sugarAmount == 10 && milkAmount == 1000 && oilAmount == 30) {
-            System.out.println("Pancakes");
-        } else {
-            System.out.println("Not enough ingredients");
-        }
+        boolean isExclusive = (vasyaAge <= 0 || vasyaAge >= 120) || (katyaAge <= 0 || katyaAge >= 120) || (mishaAge <= 0 || mishaAge >= 120);
+        String message = "Ошибка в параметрах, измените возраст от 0 по 120";
 
-        if (milkAmount == 300 && powderAmount == 5 && eggsCount == 5) {
-            System.out.println("Omelette");
+        if (isExclusive) {
+            System.out.println(message);
         } else {
-            System.out.println("Not enough ingredients");
-        }
-
-        if (appleCount == 3 && milkAmount == 100 && powderAmount == 300 && eggsCount == 4) {
-            System.out.println("Apple pie");
-        } else {
-            System.out.println("Not enough ingredients");
-        }
+            if (katyaAge <= vasyaAge && katyaAge <= mishaAge) {
+                min = katyaAge;
+                if (vasyaAge > mishaAge) {
+                    max = vasyaAge;
+                    middle = mishaAge;
+                } else {
+                    max = mishaAge;
+                    middle = vasyaAge;
+                }
+            }
+            if (vasyaAge <= katyaAge && vasyaAge <= vasyaAge) {
+                min = vasyaAge;
+                if (katyaAge > mishaAge) {
+                    max = katyaAge;
+                    middle = mishaAge;
+                } else {
+                    max = mishaAge;
+                    middle = katyaAge;
+                }
+            }
+            if (mishaAge <= katyaAge && mishaAge <= vasyaAge) {
+                mishaAge = min;
+                if (katyaAge > vasyaAge) {
+                    max = katyaAge;
+                    middle = vasyaAge;
+                } else {
+                    max = mishaAge;
+                    middle = katyaAge;
+                }
+            }
+            System.out.println("min age: " + min);
+            System.out.println("middle age: " + middle);
+            System.out.println("max age: " + max);
+        
     }
 }
