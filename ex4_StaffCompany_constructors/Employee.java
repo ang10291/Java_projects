@@ -20,7 +20,7 @@ public class Employee {
     }
 
     public String printInfo() {
-        return  "Имя: " + name + "\n" +
+        return "Имя: " + name + "\n" +
                 "E-mail: " + email + "\n" +
                 "Номер: " + (phoneNum > 0 ? phoneNum : "не задан") + "\n";
     }
