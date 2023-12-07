@@ -9,14 +9,13 @@ public class Arithmetic {
     public int sum() {
         return a + b;
     }
-    public void product() {
-        int product = a * b;
-        System.out.println(product);
+    public int product() {
+        return a * b;
     }
     public int max() {
         return Math.max(a, b);
     }
-    public void min() {
-        System.out.println(Math.min(a, b));
+    public int min() {
+        return Math.min(a, b);
     }
 }
