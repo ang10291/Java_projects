@@ -8,16 +8,15 @@ public class Elevator {
         this.maxFloor = maxFloor;
         currentFloor = 1;
     }
+
     public void moveUp() {
-        if (currentFloor < maxFloor) {
-            currentFloor++;
-        }
+        currentFloor++;
     }
+
     public void moveDown() {
-        if (currentFloor > minFloor) {
-            currentFloor--;
-        }
+        currentFloor--;
     }
+
     public int getCurrentFloor() {
         return currentFloor;
     }
