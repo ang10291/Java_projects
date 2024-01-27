@@ -17,14 +17,13 @@ public class Birthdays {
         LocalDate now = LocalDate.now();
         LocalDate birthday = LocalDate.of(year, month, day);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - E", Locale.ENGLISH);
-        String text = "";
+        StringBuilder textBuilder = new StringBuilder();
         int i = 0;
 
-        while (birthday.isBefore(now) || birthday.isEqual(now)){
-            i++;
-            text = text + i + " - " + formatter.format(birthday) + System.lineSeparator();
+        while (birthday.isBefore(now) || birthday.isEqual(now)) {
+            textBuilder.append(i++).append(" - ").append(formatter.format(birthday)).append(System.lineSeparator());
             birthday = birthday.plusYears(1);
         }
-        return text;
+        return textBuilder.toString();
     }
 }
