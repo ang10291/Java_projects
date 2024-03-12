@@ -1,20 +1,27 @@
 package PRACTICALWORK_09;
 
+import java.util.Scanner;
+
 public class PhoneCleanerRegex {
+    static final String mess = "Введите номер телефона:";
     public static void main(String[] args) {
-        String[] phone = {"+7 909 123-45-67", "+7 (909) 1234567", "8-905-1234567", "9-453-1234567",
-                "8-905-123", "905-1234567", "8-905-12345672342"};
-        String input = phone[0].replaceAll("[^0-9]", "");
-        if ((input.length() > 11 || input.length() < 10) ||
-                (input.length() == 11 && input.charAt(0) != '7' && input.charAt(0) != '8')) {
-            System.out.print("Неверный формат номера ");
+        System.out.println(mess);
+        while (true) {
+            String sc = new Scanner(System.in).nextLine();
+            String input = sc.replaceAll("[^0-9]", "");
+            if (input.equals("0")) {
+                break;
+            }
+            if ((input.length() > 11 || input.length() < 10) ||
+                    (input.length() == 11 && input.charAt(0) != '7' && input.charAt(0) != '8')) {
+                System.out.print("Неверный формат номера ");
+            }  if (input.length() == 10 && input.charAt(0) == '9'){
+                input = "7" + input;
+                System.out.print("Сохранен номер ");
+            }  if (input.length() == 11 && input.charAt(0) == '8') {
+                input = input.replaceFirst("8", "7");
+                System.out.print("Сохранен номер ");
+            }  System.out.println(input);
         }
-        if (input.length() == 10 && input.charAt(0) == '9') {
-            input = "7" + input;
-        }
-        if (input.length() == 11 && input.charAt(0) == '8') {
-            input = input.replaceFirst("8", "7");
-        }
-        System.out.println(input);
     }
 }
