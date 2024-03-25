@@ -41,26 +41,17 @@ public class Staff {
 
         // Names of all employees under 30
         System.out.println("Имена всех сотрудников, младше 30:");
-        for (Staff staff : staffs) {
-            if (staff.getAge() < 30) {
-                System.out.println(staff.getName());
-            }
-        }
+        staffs.stream().filter(s -> s.getAge() < 30)
+                .map(Staff::getName).forEach(System.out::println);
 
         // Names of all employees who are paid in rubles
         System.out.println("\nИмена всех сотрудников, получающих зарплату в рублях:");
-        for (Staff employee : staffs) {
-            if (employee.getSalary().contains("руб")) {
-                System.out.println(employee.getName());
-            }
-        }
+        staffs.stream().filter(s -> s.getSalary().contains("руб"))
+                .map(Staff::getName).forEach(System.out::println);
 
         // Average age of all staff
-        int totalAge = 0;
-        for (Staff employee : staffs) {
-            totalAge += employee.getAge();
-        }
-        double averageAge = (double) totalAge / staffs.size();
+        double averageAge = staffs.stream().mapToInt(Staff::getAge)
+                        .average().orElse(0);
         System.out.println("\nСредний возраст всех сотрудников: " + averageAge);
     }
 }
